@@ -1,5 +1,5 @@
-graph TD;
-    A-->B;
-    a-->C;
-    B-->D;
-    C-->E;
+```mermaid
+graph TD
+A-->B
+
+```
