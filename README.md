@@ -1,2 +1,2 @@
 # FullStackOpen
-Exercise from the online course
+Exercises for the Helsinki online course
