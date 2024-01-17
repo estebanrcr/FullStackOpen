@@ -17,6 +17,6 @@ Servidor -->> Navegador: Respuesta: data.json (datos JSON que contienen las nota
 Note right of Navegador: El código JavaScript con los datos JSON forma una lista con las notas y sus contenidos
 
 
-Note right of Navegador: Se completa el proceso
+Note right of Navegador: Se completa el proceso y el Navegador muestra una página web
 
 ```
