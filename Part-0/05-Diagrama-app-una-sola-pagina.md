@@ -11,7 +11,7 @@ Servidor -->> Navegador: Respuesta: main.css (Hoja de estilos)
 Navegador ->>  Servidor:  HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
 Servidor -->> Navegador: Respuesta: spa.js (archivo JavaScript)
 Navegador ->>  Servidor: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json)https://studies.cs.helsinki.fi/exampleapp/data.json
-Servidor -->> Navegador: Respuesta: data.json ()
+Servidor -->> Navegador: Respuesta: data.json (datos JSON que contienen las notas)
 
 Note right of Navegador: Se completa el proceso
 
