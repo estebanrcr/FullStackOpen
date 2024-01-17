@@ -3,11 +3,16 @@ sequenceDiagram
 Participant Navegador
 Participant Servidor
 
-Navegador->>Servidor: Envio de la entrada del usuario en el formulario, 5 solicitudes:
-Navegador-->>Servidor: HTTP POST (new_note)
-Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección
+Note right of Navegador: Envio de la entrada del usuario que crea una nueva nota, solicitudes:
+Navegador->>Servidor: HTTP POST (new_note)
+Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección "notes"
+Note right of Navegador: El  navegador recarga la página provocando tres solicitudes mas
 
-Navegador ->>  Servidor: El navegador recarga la página provocando tres solicitudes mas:
-Navegador -->>  Servidor: GET Main Css
+Navegador ->>  Servidor: GET Main.css
+Servidor -->> Navegador: main.css
+Navegador ->>  Servidor: GET Main.js
+Servidor -->> Navegador: main.js
+Navegador ->>  Servidor: GET data.json
+Servidor -->> Navegador: data.json
 
 ```
