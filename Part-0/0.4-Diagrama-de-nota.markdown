@@ -1,7 +1,13 @@
 ```mermaid
-graph TD
-A-->B;
-C-->E;
-A-->E<-->C-->U;
+sequenceDiagram
+Participant Navegador
+Participant Servidor
+
+Navegador->>Servidor: Envio de la entrada del usuario en el formulario, 5 solicitudes:
+Navegador-->>Servidor: HTTP POST (new_note)
+Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección
+
+Navegador ->>  Servidor: El navegador recarga la página provocando tres solicitudes mas:
+Navegador -->>  Servidor: GET Main Css
 
 ```
