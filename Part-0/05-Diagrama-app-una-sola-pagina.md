@@ -3,19 +3,16 @@ sequenceDiagram
 Participant Navegador
 Participant Servidor
 
-Note right of Navegador: Envio de la entrada del usuario que crea una nueva nota, solicitudes:
-Navegador->>Servidor: HTTP POST (new_note)
-Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección "notes"
-Navegador ->>  Servidor: GET Notes
+Note right of Navegador: El usuario accede a la página "https://studies.cs.helsinki.fi/exampleapp/spa":
+Navegador ->>  Servidor: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
 Servidor -->> Navegador: Código HTML
-
-
-Note right of Navegador: El  navegador recarga la página provocando tres solicitudes mas
-
-Navegador ->>  Servidor: GET Main.css
+Navegador ->>  Servidor: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
 Servidor -->> Navegador: main.css
-Navegador ->>  Servidor: GET Main.js
-Servidor -->> Navegador: main.js
-Navegador ->>  Servidor: GET data.json
+Navegador ->>  Servidor:  HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+Servidor -->> Navegador: spa.js
+Navegador ->>  Servidor: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json)https://studies.cs.helsinki.fi/exampleapp/data.json
 Servidor -->> Navegador: data.json
+
+Note right of Navegador: Se completa el proceso
+
 ```
