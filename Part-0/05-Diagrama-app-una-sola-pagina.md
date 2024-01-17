@@ -1,5 +1,21 @@
 ```mermaid
-flowchart TD;
-A-->C;
-F--->G;
+sequenceDiagram
+Participant Navegador
+Participant Servidor
+
+Note right of Navegador: Envio de la entrada del usuario que crea una nueva nota, solicitudes:
+Navegador->>Servidor: HTTP POST (new_note)
+Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección "notes"
+Navegador ->>  Servidor: GET Notes
+Servidor -->> Navegador: Código HTML
+
+
+Note right of Navegador: El  navegador recarga la página provocando tres solicitudes mas
+
+Navegador ->>  Servidor: GET Main.css
+Servidor -->> Navegador: main.css
+Navegador ->>  Servidor: GET Main.js
+Servidor -->> Navegador: main.js
+Navegador ->>  Servidor: GET data.json
+Servidor -->> Navegador: data.json
 ```
