@@ -7,16 +7,21 @@ Note right of Navegador: Envio de la entrada del usuario que crea una nueva nota
 Navegador->>Servidor: HTTP POST (new_note)
 Servidor -->> Navegador: El Servidor solicita al Navegador que haga un HTTP GET en la dirección "notes"
 Navegador ->>  Servidor: GET Notes
-Servidor -->> Navegador: Código HTML
-
-
+Servidor -->> Navegador: Respuesta: el Código HTML
 Note right of Navegador: El  navegador recarga la página provocando tres solicitudes mas
 
 Navegador ->>  Servidor: GET Main.css
-Servidor -->> Navegador: main.css
+Servidor -->> Navegador: Retorna el archivo main.css con los estilos CSS
 Navegador ->>  Servidor: GET Main.js
-Servidor -->> Navegador: main.js
+Servidor -->> Navegador: Retorna el archivo main.js (script JavaScript)
+Note right of Navegador: Inmediatamente se ejecuta el script Javascript
+
 Navegador ->>  Servidor: GET data.json
-Servidor -->> Navegador: data.json
+Servidor -->> Navegador: Retorna data.json
+Note right of Navegador: El código Javascript forma con los datos del JSOn la lista de notas y sus contenidos
+
+
+Note right of Navegador: Se completa el proceso y el  Navegador muestra la página con la nota nueva
+
 
 ```
