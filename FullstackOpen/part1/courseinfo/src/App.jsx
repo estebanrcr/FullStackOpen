@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 const Header = ({ course }) => {
   return <h1>{course}</h1>
@@ -7,19 +8,23 @@ const Part = ({ part, exercises }) => {
   return <p>{part} {exercises}</p>
  }
 
-const Content = ({ part1, exercises1, part2, exercises2, part3, exercises3}) => {
+const Content = ({ parts }) => {
   return (
     <div>
-      <Part part={part1} exercises={exercises1} />
-      <Part part={part2} exercises={exercises2} />
-      <Part part={part3} exercises={exercises3} />
+      {parts.map((part, index) => (
+        <Part key={index} part={part.name} exercises={part.exercises} />
+      )
+      )
+
+      }
+   
     </div>
   );
 };
 
 
-const Total = ( {exercises1, exercises2, exercises3 } ) => {
-  const exercisesTotal = exercises1+exercises2+exercises3;
+const Total = ( {parts } ) => {
+  const exercisesTotal = parts.reduce((total, part) => total +part.exercises, 0);
   return <p>Number of exercises {exercisesTotal}</p>
 
 }
@@ -27,30 +32,28 @@ const Total = ( {exercises1, exercises2, exercises3 } ) => {
 
 const App = () => { 
   const course = 'Half Stack application development'
-  const part1 = {
-    name: 'Fundamentals of React',
-    exercises: 10
-  }
-  const part2 = {
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+  {
     name: 'Using props to pass data',
     exercises : 7
+  },
+    {
+      name: 'State of a component',
+      exercises : 14
   }
-  const part3 = {
-    name: 'State of a component',
-    exercises : 14
-  }
+]
 
 
   return (
     
       <div>
         <Header course = {course} />
-        <Content 
-        part1={part1.name} exercises1={part1.exercises}
-        part2={part2.name} exercises2={part2.exercises}
-        part3={part3.name} exercises3={part3.exercises}
-        />
-        <Total exercises1={part1.exercises} exercises2={part2.exercises} exercises3={part3.exercises} />
+        <Content parts = {parts}   />
+        <Total parts={parts} />
         </div>
   )
 }
