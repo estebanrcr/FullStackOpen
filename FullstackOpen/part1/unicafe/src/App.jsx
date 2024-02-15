@@ -1,20 +1,18 @@
 import { useState } from 'react'
 
 
+const StatisticLine = ({text, value}) => {
+  return (
+    <li>
+    {text}: {value}
+    </li>
+  )
+}
 const Statistics = ({good, neutral, bad}) => {
   const total = good + neutral + bad;
-  const Positive = () => {
-    const percentage = Math.round(good * 100 / total);
-    return <li>positive: {isNaN(percentage) ? 0 : percentage}%</li>;
-  };
 
-  const Average = () => {
-    if (total === 0) {
-      return <li>average: 0</li>
-    }
-    const average = (good - bad) / total;
-    return <li>average: {average.toFixed(2)}</li>
-  };
+  const average = total === 0 ? 0 : (good - bad) / total;
+  const positivePercentage = total === 0 ? 0 : (good + 100) /total;
 
   if (total === 0) {
     return <p>No feedback given yet</p>;
@@ -24,29 +22,38 @@ const Statistics = ({good, neutral, bad}) => {
     <>
     <h1>statistics</h1>
     <ul>
-      <li>good: {good}</li>
-      <li>neutral: {neutral}</li>
-      <li>bad: {bad}</li>
-      <li>all:{total}</li>
-      <Average />
-      <Positive />
+      <StatisticLine text="good" value={good}/>
+      <StatisticLine text="neutral" value={neutral} />
+      <StatisticLine text="bad" value={bad} />
+      <StatisticLine text="average" value={average.toFixed(2)} />
+        <StatisticLine text="positive" value={`${positivePercentage.toFixed(2)}%`} />
     </ul>
     </>
   )
 }
+
+
+const Button = ( {label, handleClick}) => {
+  return <button onClick={handleClick}>{label}</button>
+}
+
 
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const incrementGood = () => setGood(good +1);
+  const incrementNeutral = () => setNeutral(neutral +1);
+  const incrementBad = () => setBad(bad +1);
+
   return (
     <>
       <div>
         <h1>give feedback</h1>
-        <button onClick={() => setGood(good+1)}>good</button>
-        <button onClick={() => {setNeutral(neutral +1)}}>neutral</button>
-        <button onClick={() =>{setBad(bad+1)}}>bad</button>       
+        <Button label="good" handleClick={incrementGood} />
+        <Button label="neutral" handleClick={incrementNeutral} />
+        <Button label="bad" handleClick={incrementBad} />
       </div>
       <Statistics good={good} neutral={neutral} bad={bad} />
     </>
