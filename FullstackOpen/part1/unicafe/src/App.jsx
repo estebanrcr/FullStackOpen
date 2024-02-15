@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 const Statistics = ({good, neutral, bad}) => {
   const total = good + neutral + bad;
-  
   const Positive = () => {
     const percentage = Math.round(good * 100 / total);
     return <li>positive: {isNaN(percentage) ? 0 : percentage}%</li>;
@@ -17,9 +16,13 @@ const Statistics = ({good, neutral, bad}) => {
     return <li>average: {average.toFixed(2)}</li>
   };
 
+  if (total === 0) {
+    return <p>No feedback given yet</p>;
+  }
+
   return (
     <>
-    <h1>Statistics</h1>
+    <h1>statistics</h1>
     <ul>
       <li>good: {good}</li>
       <li>neutral: {neutral}</li>
