@@ -1,0 +1,12 @@
+* {
+    background-color: hsla(0, 0%, 0%, 0.014);
+    font-family: lato;
+  }
+  .contenedor-principal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+ button {
+    cursor: pointer
+  }
