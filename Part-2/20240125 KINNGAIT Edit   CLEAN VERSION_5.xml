@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE Avid:StreamItems SYSTEM "AvidSettingsFile.dtd">
+<Avid:StreamItems xmlns:Avid="http://www.avid.com">
+<Avid:XMLFileData>
+<AvProp name="DomainMagic" type="string">Domain</AvProp>
+<AvProp name="DomainKey" type="char4">58424a44</AvProp>
+</Avid:XMLFileData></Avid:StreamItems>
