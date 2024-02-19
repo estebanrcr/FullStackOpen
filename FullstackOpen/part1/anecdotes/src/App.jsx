@@ -4,10 +4,20 @@ import './App.css'
 
 const Button = ({ handleClick}) => {
   return(
-    <button className="boton-cita-aleatoria"onClick={handleClick}>Proxima anecdota</button>
+    <button className="boton-cita-aleatoria"onClick={handleClick}>
+      Proxima anecdota
+    </button>
   )
 }
 
+const ButtonVote = ({ handleVote }) => {
+  return (
+    <button className='boton-votar-cita' onClick={handleVote}>
+    Votar
+    </button>
+
+  )
+}
 
 const App = () => {
   const anecdotes = [
@@ -21,24 +31,38 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
-
   const randomAnecdote = () => {
     return anecdotes[Math.floor(Math.random() * anecdotes.length)];
   };
-
   const [selected, setSelected] = useState(randomAnecdote());
-
-
   const handleRandomAnecdote = () => {
     setSelected(randomAnecdote())
   }
 
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0));
+
+  const handleVote = () => {
+    const newVotes = [...votes];
+    const selectedIndex= anecdotes.indexOf(selected);
+    newVotes[selectedIndex] +=1;
+    setVotes(newVotes)
+  }
+
+  const maxVotesIndice = votes.indexOf(Math.max(...votes));
+  const anecdoteConMasVotos = anecdotes[maxVotesIndice]
 
 
   return (
     <div className='contenedor-principal'>
-      {selected}
+      <h1>Anecdote of the day</h1>
+      <div>{selected}</div>
+      <p>has {votes[anecdotes.indexOf(selected)]} votes </p>
+      <ButtonVote handleVote={handleVote} />
       <Button handleClick={handleRandomAnecdote} />
+      <h1>Anecdote with most votes</h1>
+      <div>{anecdoteConMasVotos}</div>
+      
+      
     </div>
   )
 }

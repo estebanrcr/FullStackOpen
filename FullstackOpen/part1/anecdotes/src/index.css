@@ -1,12 +1,3 @@
-* {
-  background-color: hsla(0, 0%, 0%, 0.014);
-  font-family: lato;
-}
 .contenedor-principal {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.boton-cita-aleatoria {
-  cursor: pointer
+    display: flex;
 }
